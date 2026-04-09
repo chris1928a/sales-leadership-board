@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sales Leadership Board - B2B Sales Exchange</title>
+<title>Sales Leadership Board – B2B Sales Exchange</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -17,7 +17,6 @@
     --text: #e8e8f0;
     --text-muted: #8888a0;
     --accent: #6366f1;
-    --accent-glow: rgba(99, 102, 241, 0.3);
     --green: #22c55e;
     --yellow: #eab308;
     --red: #ef4444;
@@ -33,11 +32,7 @@
     width: 100vw;
   }
 
-  .deck {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-  }
+  .deck { width: 100vw; height: 100vh; position: relative; }
 
   .slide {
     position: absolute;
@@ -49,43 +44,40 @@
     opacity: 0;
     transition: opacity 0.4s ease;
   }
-  .slide.active {
-    display: flex;
-    opacity: 1;
-  }
+  .slide.active { display: flex; opacity: 1; }
 
   h1 {
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 800;
     line-height: 1.15;
     margin-bottom: 24px;
     letter-spacing: -0.03em;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     letter-spacing: -0.02em;
   }
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 12px;
     color: var(--accent);
   }
   p, li {
-    font-size: 1.15rem;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.65;
     color: var(--text-muted);
   }
-  .slide p { max-width: 800px; }
+  .slide p { max-width: 780px; }
   ul { list-style: none; padding: 0; }
-  li { padding: 6px 0; padding-left: 24px; position: relative; }
+  li { padding: 5px 0; padding-left: 24px; position: relative; }
   li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 14px;
+    top: 13px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -110,43 +102,42 @@
     margin-bottom: 16px;
   }
   .tag-accent { background: var(--accent); color: #fff; }
-  .tag-green { background: rgba(34,197,94,0.15); color: var(--green); }
   .tag-red { background: rgba(239,68,68,0.15); color: var(--red); }
+  .tag-green { background: rgba(34,197,94,0.15); color: var(--green); }
   .tag-orange { background: rgba(249,115,22,0.15); color: var(--orange); }
 
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 24px;
+    gap: 28px;
+    margin-top: 20px;
   }
   .grid-3 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-    margin-top: 24px;
+    gap: 20px;
+    margin-top: 20px;
   }
 
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 28px;
+    padding: 24px;
   }
-  .card h3 { margin-bottom: 16px; }
 
   .metric {
     text-align: center;
-    padding: 24px;
+    padding: 20px;
   }
   .metric .number {
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 800;
     line-height: 1;
     margin-bottom: 8px;
   }
   .metric .label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     font-weight: 500;
   }
@@ -155,19 +146,19 @@
     width: 100%;
     border-collapse: separate;
     border-spacing: 4px;
-    margin-top: 16px;
+    margin-top: 12px;
   }
   .matrix-table th, .matrix-table td {
-    padding: 14px 16px;
+    padding: 12px 14px;
     text-align: center;
     border-radius: 8px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   .matrix-table th {
     background: var(--surface-2);
     color: var(--text-muted);
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -197,10 +188,7 @@
     font-weight: 500;
     white-space: nowrap;
   }
-  .flow-arrow {
-    color: var(--accent);
-    font-size: 1.4rem;
-  }
+  .flow-arrow { color: var(--accent); font-size: 1.4rem; }
 
   .code-block {
     background: var(--surface);
@@ -208,28 +196,16 @@
     border-radius: 12px;
     padding: 20px 24px;
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     line-height: 1.7;
     overflow-x: auto;
     white-space: pre;
     color: var(--text-muted);
-    margin-top: 16px;
+    margin-top: 12px;
   }
   .code-block .kw { color: var(--accent); }
   .code-block .str { color: var(--green); }
   .code-block .cm { color: #555; }
-  .code-block .num { color: var(--orange); }
-
-  .cost-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .cost-row:last-child { border-bottom: none; }
-  .cost-row .item { font-weight: 500; }
-  .cost-row .price { font-weight: 700; font-size: 1.1rem; }
 
   .bottom-bar {
     position: fixed;
@@ -260,71 +236,21 @@
   }
 
   .subtitle {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: var(--text-muted);
     font-weight: 400;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .big-quote {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 300;
     font-style: italic;
     color: var(--text);
     border-left: 4px solid var(--accent);
     padding-left: 24px;
-    margin: 24px 0;
+    margin: 20px 0;
     max-width: 700px;
-  }
-
-  .vs-box {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-top: 24px;
-  }
-  .vs-side {
-    flex: 1;
-    padding: 24px;
-    border-radius: 16px;
-    text-align: center;
-  }
-  .vs-label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-  .vs-number {
-    font-size: 2.8rem;
-    font-weight: 800;
-  }
-  .vs-detail {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-  .vs-divider {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--text-muted);
-  }
-
-  .icon-list li {
-    padding-left: 36px;
-    margin-bottom: 12px;
-  }
-  .icon-list li::before {
-    content: attr(data-icon);
-    position: absolute;
-    left: 0;
-    top: 6px;
-    width: auto;
-    height: auto;
-    border-radius: 0;
-    background: none;
-    font-size: 1.2rem;
   }
 
   @keyframes fadeInUp {
@@ -347,542 +273,472 @@
 <div class="deck" id="deck">
 
 <!-- ============================================================ -->
-<!-- SLIDE 1: TITLE -->
+<!-- S1: THESE -->
 <!-- ============================================================ -->
 <div class="slide active" id="s1">
   <span class="tag tag-accent">MyEO B2B Sales Exchange / 24. April 2026</span>
-  <h1>Sales Leadership Board<br><span class="highlight">Close.com Calls in KPI-Tracking,<br>Training & ICP Feedback verwandeln</span></h1>
-  <p class="subtitle">256 Calls. 3 Reps. 15 EUR/Monat. Null Gong.</p>
-  <p style="margin-top: 32px; font-size: 1rem; color: var(--text-muted);">
-    Christoph Erler &mdash; Erler Ventures
-  </p>
+  <h1>Euer CRM weiß, was schiefläuft.<br><span class="highlight">Ihr hört nur nicht zu.</span></h1>
+  <p class="subtitle">Wie wir aus Close.com-Daten ein Red-Flag-System, automatische Coaching-Empfehlungen und einen ICP-Feedback-Loop gebaut haben.</p>
+  <p style="margin-top: 32px; font-size: 1rem;">Christoph Erler – Erler Ventures</p>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 2: DAS PROBLEM -->
+<!-- S2: DAS EIGENTLICHE PROBLEM -->
 <!-- ============================================================ -->
 <div class="slide" id="s2">
-  <span class="tag tag-red">Das Problem</span>
-  <h1>3 Reps. <span class="red">1 Diagnose.</span><br>Null Coaching.</h1>
-  <div class="grid-3" style="margin-top: 32px;">
+  <span class="tag tag-red">Ausgangslage</span>
+  <h1>3 Vertriebler. <span class="red">3 komplett verschiedene Probleme.</span><br>Unser System hat allen dasselbe gesagt.</h1>
+  <div class="grid-3" style="margin-top: 28px;">
     <div class="card">
-      <h3>Joshua</h3>
-      <p><span class="white" style="font-weight:700;">80 Calls/Tag, 28% Connect Rate</span></p>
-      <p style="margin-top:8px;">1 Meeting/Woche. Null Discovery. Spricht, wartet, legt auf.</p>
-      <p style="margin-top:12px; color: var(--red); font-weight:600;">Bot sagt: "PITCH PROBLEM"</p>
-      <p style="color: var(--green); font-weight:600;">Realität: DISCOVERY GAP</p>
+      <h3>Rep A</h3>
+      <p><span class="white" style="font-weight:700;">80 Calls am Tag, 28% Connect Rate</span></p>
+      <p style="margin-top:8px;">Kommt durch. Redet. Aber stellt keine Fragen. Keine Discovery, kein Termin.</p>
+      <p style="margin-top:12px; color: var(--red); font-weight:600;">System sagt: "Pitch-Problem"</p>
+      <p style="color: var(--green); font-weight:600;">Eigentlich: Fehlende Discovery</p>
     </div>
     <div class="card">
-      <h3>Tim</h3>
-      <p><span class="white" style="font-weight:700;">54 Calls/Tag, 275K EUR Pipeline</span></p>
-      <p style="margin-top:8px;">260K davon = 1 Deal. Rest: 15K. Ein Bein.</p>
-      <p style="margin-top:12px; color: var(--red); font-weight:600;">Bot sagt: "PITCH PROBLEM"</p>
-      <p style="color: var(--green); font-weight:600;">Realität: CONCENTRATION RISK</p>
+      <h3>Rep B</h3>
+      <p><span class="white" style="font-weight:700;">54 Calls am Tag, 275K Pipeline</span></p>
+      <p style="margin-top:8px;">Klingt gut. Nur: 260K davon kommen aus einem einzigen Deal. Der Rest ist heiße Luft.</p>
+      <p style="margin-top:12px; color: var(--red); font-weight:600;">System sagt: "Pitch-Problem"</p>
+      <p style="color: var(--green); font-weight:600;">Eigentlich: Klumpenrisiko</p>
     </div>
     <div class="card">
-      <h3>Tobias</h3>
-      <p><span class="white" style="font-weight:700;">10 Meetings/Woche, 50K Pipeline</span></p>
-      <p style="margin-top:8px;">Target: 150K. Meetings mit kleinen Firmen, 8K Fee.</p>
-      <p style="margin-top:12px; color: var(--red); font-weight:600;">Bot sagt: "PITCH PROBLEM"</p>
-      <p style="color: var(--green); font-weight:600;">Realität: TARGETING GAP</p>
+      <h3>Rep C</h3>
+      <p><span class="white" style="font-weight:700;">10 Meetings pro Woche, 50K Pipeline</span></p>
+      <p style="margin-top:8px;">Meetings ohne Ende. Aber mit den falschen Firmen. Kleine Mandante, kleine Fees.</p>
+      <p style="margin-top:12px; color: var(--red); font-weight:600;">System sagt: "Pitch-Problem"</p>
+      <p style="color: var(--green); font-weight:600;">Eigentlich: Falsches Targeting</p>
     </div>
   </div>
-  <p style="margin-top: 24px; font-size: 1rem; color: var(--text-muted);">
-    Das alte System: 5-Zeilen if/elif. Eine Diagnose für alle. Wie ein Arzt der jedem Patienten Antibiotika verschreibt.
-  </p>
+  <p style="margin-top: 20px; font-size: 0.95rem;">Das Problem war nicht das Team. Es war ein if/elif mit fünf Zeilen, das jedem die gleiche Diagnose gibt.</p>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 3: TEIL 1 - SDR TRACKING -->
+<!-- S3: RED FLAG SYSTEM – ÜBERSICHT -->
 <!-- ============================================================ -->
 <div class="slide" id="s3">
-  <span class="tag tag-accent">Teil 1</span>
-  <h1>SDR Tracking &<br><span class="highlight">Automatisierte Call-Analyse</span></h1>
-  <p class="subtitle">Close.com API als Single Source of Truth</p>
-  <div class="flow" style="margin-top: 24px;">
-    <div class="flow-box" style="border-color: var(--accent);">Close.com CRM</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-box">API Pull (18:00 CET)</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-box">Calls + Emails + Meetings</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-box" style="border-color: var(--green);">Google Sheets Dashboard</div>
-    <span class="flow-arrow">&rarr;</span>
-    <div class="flow-box" style="border-color: var(--orange);">Telegram Briefing</div>
+  <span class="tag tag-red">Red Flag System</span>
+  <h1>Was wir gebaut haben:<br><span class="highlight">Automatische Warnsignale pro Rep, pro Tag</span></h1>
+  <p style="margin-bottom: 16px;">Jeden Abend zieht das System Calls, Emails und Meetings aus dem CRM. Dann passieren drei Dinge:</p>
+  <div class="grid-3" style="margin-top: 16px;">
+    <div class="card">
+      <h3 style="color: var(--red);">1. Red Flags</h3>
+      <p>Wo stimmt was nicht? Welcher Rep hat Aktivität aber keine Ergebnisse? Oder umgekehrt? Welche Calls waren zu kurz, welche Einwände häufen sich?</p>
+    </div>
+    <div class="card">
+      <h3 style="color: var(--orange);">2. Coaching-Empfehlung</h3>
+      <p>Basierend auf den Red Flags: Welche Dimension ist die schwächste? Was genau soll der Rep diese Woche üben? Nicht generisch, sondern individuell.</p>
+    </div>
+    <div class="card">
+      <h3 style="color: var(--green);">3. ICP Feedback</h3>
+      <p>Welche Einwände kommen immer wieder? Welche Firmentypen blocken systematisch? Das fließt zurück in Targeting, Pitch und Outbound-Listen.</p>
+    </div>
   </div>
-  <div class="grid-2" style="margin-top: 28px;">
-    <div class="card">
-      <h3>Was getrackt wird</h3>
-      <ul>
-        <li>Outbound Calls + Connect Rate pro Rep</li>
-        <li>Avg Connected Duration (nur echte Gespräche >30s)</li>
-        <li>Emails: Sent, Manual, Follow-up, Received, Bounces</li>
-        <li>Meetings booked + held</li>
-        <li>Pipeline Value (EUR) + Won Deals</li>
-        <li>Speed-to-Lead (Minuten)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Call-Analyse (pro Call)</h3>
-      <ul>
-        <li><span class="white">Opener Score</span> (1-10): Hook, Pattern-Interrupt</li>
-        <li><span class="white">Pitch Score</span> (1-10): Value Prop, Problem-first</li>
-        <li><span class="white">Einwandbehandlung</span> (1-10): LARC Framework</li>
-        <li><span class="white">Closing Score</span> (1-10): Ask, Stille, Commitment</li>
-        <li><span class="white">Gesprächstiefe</span> (1-10): SPIN, offene Fragen</li>
-        <li>Transkript-Auszug + Key Moments + Stärken</li>
-      </ul>
-    </div>
+  <div class="flow" style="margin-top: 24px; justify-content: center;">
+    <div class="flow-box" style="border-color: var(--accent);">CRM API</div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box">Täglicher Pull</div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box" style="border-color: var(--red);">Red Flags</div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box" style="border-color: var(--orange);">Coaching</div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box" style="border-color: var(--green);">ICP Update</div>
   </div>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 4: ARCHITEKTUR -->
+<!-- S4: GAP-DETECTION MATRIX -->
 <!-- ============================================================ -->
 <div class="slide" id="s4">
-  <span class="tag tag-accent">Architektur</span>
-  <h1>Der Stack:<br><span class="highlight">15 EUR/Monat. Kein Vendor Lock-in.</span></h1>
-  <div class="grid-2" style="margin-top: 24px;">
-    <div>
-      <div class="flow" style="flex-direction: column; align-items: flex-start; gap: 8px;">
-        <div class="flow-box" style="width: 100%; text-align: center; border-color: var(--accent);">
-          <strong>Close.com API</strong><br>
-          <span style="font-size:0.8rem; color: var(--text-muted);">activity/call, activity/email, activity/meeting</span>
-        </div>
-        <div style="text-align:center; width:100%; color: var(--accent);">&darr;</div>
-        <div class="flow-box" style="width: 100%; text-align: center;">
-          <strong>Python Bot</strong> (bot_new.py)<br>
-          <span style="font-size:0.8rem; color: var(--text-muted);">Pagination, Rate Limiting, Retry mit Backoff</span>
-        </div>
-        <div style="text-align:center; width:100%; color: var(--accent);">&darr;</div>
-        <div class="flow-box" style="width: 100%; text-align: center; border-color: var(--green);">
-          <strong>Deepgram</strong> (Transkription) + <strong>Claude API</strong> (Scoring)<br>
-          <span style="font-size:0.8rem; color: var(--text-muted);">0.0065 EUR/min + 0.002 EUR/Call</span>
-        </div>
-        <div style="text-align:center; width:100%; color: var(--accent);">&darr;</div>
-        <div class="flow-box" style="width: 100%; text-align: center; border-color: var(--orange);">
-          <strong>Google Sheets</strong> (8 Tabs) + <strong>Telegram</strong> (Daily Briefing)
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="card" style="margin-bottom: 16px;">
-        <h3>Google Sheets Tabs</h3>
-        <ul style="font-size: 0.95rem;">
-          <li>Master Dashboard (Scorecards, Gap-Detection, Trends)</li>
-          <li>Daily KPIs (Rohdaten mit Formeln)</li>
-          <li>Call Analysis (pro Call mit Transkript)</li>
-          <li>Email Analysis (pro Email mit Scoring)</li>
-          <li>Lost Reasons (Einwand-Tracking)</li>
-          <li>Q&A / Einwandbehandlung (44 Skripte)</li>
-          <li>Leaderboards (Wochen-Rankings)</li>
-          <li>Individuelle Coaching Tabs (pro Rep)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- SLIDE 5: KOSTEN VERGLEICH -->
-<!-- ============================================================ -->
-<div class="slide" id="s5">
-  <span class="tag tag-red">Kosten</span>
-  <h1>Gong vs. <span class="green">Sales Leadership Board</span></h1>
-  <div class="vs-box">
-    <div class="vs-side" style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 16px;">
-      <div class="vs-label red">Gong.io (3 User)</div>
-      <div class="vs-number red">~9.300 EUR</div>
-      <div class="vs-detail">120-250 EUR/User/Monat + 5.000 EUR Plattform/Jahr</div>
-      <div class="vs-detail" style="margin-top:8px;">50-70% Churn innerhalb 12 Monaten</div>
-    </div>
-    <div class="vs-divider">vs.</div>
-    <div class="vs-side" style="background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 16px;">
-      <div class="vs-label green">Sales Leadership Board</div>
-      <div class="vs-number green">~15 EUR</div>
-      <div class="vs-detail">pro Monat. Deepgram + Claude API + Hosting</div>
-      <div class="vs-detail" style="margin-top:8px;">Eigener Code. Kein Lock-in. Kein Minimum.</div>
-    </div>
-  </div>
-  <div class="grid-3" style="margin-top: 28px;">
-    <div class="card metric">
-      <div class="number highlight">5 EUR</div>
-      <div class="label">AWS Lightsail / Hosting</div>
-    </div>
-    <div class="card metric">
-      <div class="number highlight">~7 EUR</div>
-      <div class="label">Deepgram (0.0065 EUR/min)</div>
-    </div>
-    <div class="card metric">
-      <div class="number highlight">~3 EUR</div>
-      <div class="label">Claude API (0.002 EUR/Call)</div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- SLIDE 6: TEIL 2 - GAP DETECTION MATRIX -->
-<!-- ============================================================ -->
-<div class="slide" id="s6">
-  <span class="tag tag-accent">Teil 2: Training</span>
-  <h1>Gap-Detection Matrix<br><span class="highlight">Individuelle Diagnose statt if/elif</span></h1>
-  <p style="margin-bottom: 16px;">Zwei Achsen: <span class="white" style="font-weight:600;">Aktivität</span> (Calls + Emails vs. Target) und <span class="white" style="font-weight:600;">Outcomes</span> (Connect Rate + Meetings + Pipeline)</p>
-  <table class="matrix-table" style="max-width: 900px;">
+  <span class="tag tag-red">Red Flags</span>
+  <h1>Gap-Detection Matrix:<br><span class="highlight">Zwei Achsen statt fünf if/elif</span></h1>
+  <p style="margin-bottom: 12px;">Aktivität (tut der Rep genug?) vs. Outcomes (kommt was dabei raus?). Die Kombination ergibt die echte Diagnose.</p>
+  <table class="matrix-table" style="max-width: 880px;">
     <thead>
       <tr>
         <th></th>
-        <th>Outcomes RED</th>
-        <th>Outcomes YELLOW</th>
-        <th>Outcomes GREEN</th>
+        <th>Outcomes schlecht</th>
+        <th>Outcomes mittel</th>
+        <th>Outcomes gut</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th>Activity RED</th>
-        <td class="cell-red">EFFORT GAP<br><small>Aktivität drastisch erhöhen</small></td>
-        <td class="cell-red">EFFORT GAP<br><small>Mehr Aktivität = mehr Ergebnisse</small></td>
-        <td class="cell-accent">EFFICIENCY STAR<br><small>Gute Ergebnisse, mehr Volumen!</small></td>
+        <th>Aktivität niedrig</th>
+        <td class="cell-red">EFFORT GAP<br><small>Macht zu wenig. Punkt.</small></td>
+        <td class="cell-red">EFFORT GAP<br><small>Mehr machen = mehr Ergebnis</small></td>
+        <td class="cell-accent">EFFICIENCY STAR<br><small>Wenig Input, guter Output. Skalieren.</small></td>
       </tr>
       <tr>
-        <th>Activity YELLOW</th>
+        <th>Aktivität mittel</th>
         <td class="cell-yellow">SKILL GAP<br><small>Qualität verbessern</small></td>
-        <td class="cell-yellow">PLATEAU<br><small>Beides steigern</small></td>
-        <td class="cell-accent">EFFICIENCY STAR<br><small>Conversion stark, Volume up</small></td>
+        <td class="cell-yellow">PLATEAU<br><small>Beides ein bisschen mehr</small></td>
+        <td class="cell-accent">EFFICIENCY STAR<br><small>Gute Conversion. Mehr Volume.</small></td>
       </tr>
       <tr>
-        <th>Activity GREEN</th>
-        <td class="cell-red">SKILL GAP<br><small>Hohe Aktivität, schwache Ergebnisse</small></td>
-        <td class="cell-yellow">SKILL GAP<br><small>Conversion ausbaufähig</small></td>
-        <td class="cell-green">SCALE GAP<br><small>Alles on track. Pipeline ausbauen.</small></td>
+        <th>Aktivität hoch</th>
+        <td class="cell-red">SKILL GAP<br><small>Viel Arbeit, kein Ertrag. Training.</small></td>
+        <td class="cell-yellow">SKILL GAP<br><small>Conversion muss besser werden</small></td>
+        <td class="cell-green">ON TRACK<br><small>Alles läuft. Pipeline ausbauen.</small></td>
       </tr>
     </tbody>
   </table>
-  <p style="margin-top: 16px; font-size: 0.95rem;">Jeder Rep bekommt <span class="white" style="font-weight:600;">2 Coaching-Focuses pro Woche</span>, basierend auf echten Call-Recordings, nicht auf KPI-Thresholds.</p>
+  <p style="margin-top: 14px; font-size: 0.9rem;">Zusätzlich erkennt das System Sub-Flags: Opener zu schwach, Calls zu kurz, Speed-to-Lead zu langsam, Meetings aber keine Proposals.</p>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 7: CLOSED-LOOP COACHING -->
+<!-- S5: CALL SCORING – 6 DIMENSIONEN -->
+<!-- ============================================================ -->
+<div class="slide" id="s5">
+  <span class="tag tag-red">Red Flags: Call-Ebene</span>
+  <h1>Jeder Call wird in<br><span class="highlight">6 Dimensionen bewertet</span></h1>
+  <p style="margin-bottom: 16px;">Das CRM liefert Zahlen. Was es nicht liefert: ob der Rep die richtigen Fragen stellt. Dafür transkribieren wir jeden Call und lassen ihn scoren.</p>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Die 6 Dimensionen</h3>
+      <ul>
+        <li><span class="white">Opener</span> – Kommt der Rep durch? Macht der Einstieg neugierig oder wird aufgelegt?</li>
+        <li><span class="white">Pitch</span> – Wird das Problem des Prospects adressiert? Oder nur Features aufgezählt?</li>
+        <li><span class="white">Einwandbehandlung</span> – Struktur oder Improvisation? Kommt eine Rückfrage?</li>
+        <li><span class="white">Closing</span> – Gibt es einen klaren nächsten Schritt? Oder endet der Call im Nichts?</li>
+        <li><span class="white">Gesprächstiefe</span> – Offene Fragen? Pausen? Oder ein Monolog?</li>
+        <li><span class="white">Rapport</span> – Hört der Rep zu? Spiegelt er? Passt die Tonalität?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Wie das Scoring funktioniert</h3>
+      <p>Call wird aufgenommen und transkribiert. Das Transkript geht an Claude mit einem strukturierten Scoring-Prompt.</p>
+      <p style="margin-top: 12px;">Pro Call kommen zurück: 6 Scores (1-10), eine Zusammenfassung, erkannte Einwände, Stärken, und eine konkrete Trainingsempfehlung.</p>
+      <p style="margin-top: 12px;">Über 14 Tage entsteht ein Rolling Average pro Dimension. Die schwächste Dimension wird zum Coaching-Fokus der Woche.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- S6: COACHING – FRAMEWORKS UND WARUM -->
+<!-- ============================================================ -->
+<div class="slide" id="s6">
+  <span class="tag tag-orange">Coaching-Empfehlungen</span>
+  <h1>Das System empfiehlt nicht "üb mehr".<br><span class="highlight">Es sagt genau, was und warum.</span></h1>
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <h3>LARC Framework (Einwandbehandlung)</h3>
+      <p><span class="white" style="font-weight:600;">L</span>isten – Ausreden lassen. Nicht unterbrechen.<br>
+      <span class="white" style="font-weight:600;">A</span>cknowledge – "Verstehe ich." Kein Widerspruch.<br>
+      <span class="white" style="font-weight:600;">R</span>espond – Das echte Concern adressieren, nicht die Oberfläche.<br>
+      <span class="white" style="font-weight:600;">C</span>onfirm – "Beantwortet das Ihre Frage?"</p>
+      <p style="margin-top: 12px; font-size: 0.9rem;"><span class="white">Warum LARC?</span> Ohne Struktur kippt Einwandbehandlung in Argumentation. Der Prospect fühlt sich nicht gehört und macht dicht. LARC hält das Gespräch offen.</p>
+    </div>
+    <div class="card">
+      <h3>SPIN Selling (Discovery)</h3>
+      <p><span class="white" style="font-weight:600;">S</span>ituation – Wie sieht es gerade aus?<br>
+      <span class="white" style="font-weight:600;">P</span>roblem – Was nervt? Was kostet Zeit/Geld?<br>
+      <span class="white" style="font-weight:600;">I</span>mplication – Was passiert, wenn das so bleibt?<br>
+      <span class="white" style="font-weight:600;">N</span>eed-Payoff – Wie sähe die Lösung aus?</p>
+      <p style="margin-top: 12px; font-size: 0.9rem;"><span class="white">Warum SPIN?</span> Weil Prospects sich selbst überzeugen müssen. Wer nur pitcht, überzeugt niemanden. SPIN bringt den Prospect dazu, sein eigenes Problem zu artikulieren.</p>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top: 16px;">
+    <div class="card">
+      <h3>Pattern-Interrupt (Opener)</h3>
+      <p>Die ersten 7 Sekunden entscheiden. "Hallo, ich bin X von Y, wir machen Z" aktiviert den Autopilot: "Kein Interesse." Ein Pattern-Interrupt bricht diesen Reflex.</p>
+      <p style="margin-top: 8px; font-size: 0.9rem;"><span class="white">Warum?</span> Entscheider bekommen 5-15 Cold-Outreach-Nachrichten pro Woche. Wer klingt wie alle anderen, wird behandelt wie alle anderen.</p>
+    </div>
+    <div class="card">
+      <h3>3-Sekunden-Pause (Tiefe)</h3>
+      <p>Nach jeder Frage: 3 Sekunden warten. Nicht reden. Der Prospect füllt die Stille mit echten Informationen.</p>
+      <p style="margin-top: 8px; font-size: 0.9rem;"><span class="white">Warum?</span> Durchschnittliche Reps warten 0,8 Sekunden. Top-Performer warten 3-5 Sekunden. Stille ist unbequem, aber produktiv. Wer sie aushält, lernt mehr über den Prospect.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- S7: COACHING – CLOSED LOOP -->
 <!-- ============================================================ -->
 <div class="slide" id="s7">
-  <span class="tag tag-accent">Teil 2: Training Methoden</span>
-  <h1>Closed-Loop Coaching<br><span class="highlight">Vom Call zur Verhaltensänderung</span></h1>
+  <span class="tag tag-orange">Coaching-Empfehlungen</span>
+  <h1>Schwächste Dimension wird zum<br><span class="highlight">Trainingsplan der Woche</span></h1>
   <div class="grid-2" style="margin-top: 24px;">
     <div>
       <div class="card" style="margin-bottom: 16px;">
-        <h3>Call Scoring (6 Dimensionen)</h3>
-        <ul>
-          <li><span class="white">Opener</span> &rarr; Hook-Rotation, Pattern-Interrupt, Gatekeeper-Bypass</li>
-          <li><span class="white">Pitch</span> &rarr; Value Prop, Problem-first, ROI-Argumentation</li>
-          <li><span class="white">Einwandbehandlung</span> &rarr; LARC Framework, Reframing, Poke-the-Bear</li>
-          <li><span class="white">Closing</span> &rarr; 1-10 Close, Hypothetical, Summary, Trial, Assumptive</li>
-          <li><span class="white">Gesprächstiefe</span> &rarr; SPIN Selling, Mirroring, 3-Sek-Pause</li>
-          <li><span class="white">Rapport</span> &rarr; Labeling, Active Listening, Tonalität</li>
-        </ul>
+        <h3>Automatisches Mapping</h3>
+        <table class="matrix-table" style="margin-top: 0;">
+          <thead><tr><th>Schwächste Dimension</th><th>Training-Modul</th></tr></thead>
+          <tbody>
+            <tr><td>Opener schwach</td><td>Hook-Rotation, verschiedene Einstiege testen</td></tr>
+            <tr><td>Pitch schwach</td><td>Value Prop schärfen, Problem-first, ROI</td></tr>
+            <tr><td>Einwandbehandlung</td><td>LARC-Framework drillen, Reframing</td></tr>
+            <tr><td>Closing schwach</td><td>1-10 Close, Trial Close, Stille nach dem Ask</td></tr>
+            <tr><td>Tiefe fehlt</td><td>SPIN, offene Fragen, 3-Sek-Pause</td></tr>
+            <tr><td>Rapport fehlt</td><td>Mirroring, Labeling, Tonalität</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <div>
       <div class="card" style="margin-bottom: 16px;">
-        <h3>Warum diese Methoden?</h3>
-        <ul>
-          <li><span class="white">LARC</span> (Listen-Acknowledge-Respond-Confirm): Strukturierte Einwandbehandlung statt Improvisation</li>
-          <li><span class="white">SPIN Selling</span>: Situation-Problem-Implication-Need. Prospects verkaufen sich selbst.</li>
-          <li><span class="white">Pattern-Interrupt</span>: Erste 7 Sekunden entscheiden. Standardöffner = Auflegen.</li>
-          <li><span class="white">3-Sek-Pause</span>: Nach jeder Frage. Prospect füllt die Stille mit echten Informationen.</li>
-        </ul>
+        <h3>4-Phasen Ramping</h3>
+        <p>Neue Reps haben andere Targets als erfahrene. Einen Monat-2-Rep mit Monat-6-Targets zu messen produziert nur Frust und falsche Red Flags.</p>
+        <p style="margin-top: 12px;">Das System berechnet die Phase automatisch anhand des Startdatums. Targets steigen über 4 Phasen (0-30, 31-60, 61-90, 90+ Tage).</p>
+        <p style="margin-top: 12px;">An Tag 30, 60 und 90 gibt es einen Checkpoint-Alert: "Performance-Review fällig."</p>
       </div>
       <div class="card">
-        <h3>Ergebnis (14-Tage Rolling)</h3>
-        <p>System identifiziert <span class="white" style="font-weight:600;">schwächste Dimension pro Rep</span> und mappt automatisch auf das passende Training-Modul. Keine generischen Tipps.</p>
+        <h3>Einwand-Bibliothek</h3>
+        <p>44 vorgeschriebene Skripte mit LARC-Struktur. Wenn ein Deal verloren geht, matched das System den Lost Reason per Fuzzy-Matching zum passenden Einwand-Skript und hängt es an die Coaching-Empfehlung.</p>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 8: RAMPING FRAMEWORK -->
+<!-- S8: LEARNING SYSTEM – ICP -->
 <!-- ============================================================ -->
 <div class="slide" id="s8">
-  <span class="tag tag-orange">Training: Ramping</span>
-  <h1>4-Phasen Ramping<br><span class="highlight">Auto-adjustierte Targets pro Rep</span></h1>
-  <p style="margin-bottom: 20px;">Jeder Rep hat andere Targets je nach Startdatum. Das System berechnet die Phase automatisch.</p>
-  <div class="grid-2" style="margin-top: 16px;">
-    <div>
-      <table class="matrix-table">
-        <thead>
-          <tr><th>Phase</th><th>Zeitraum</th><th>Calls/Tag</th><th>Connect Rate</th><th>Meetings/Woche</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Phase 1</td><td>Tag 0-30</td><td>40</td><td>5%</td><td>2</td></tr>
-          <tr><td>Phase 2</td><td>Tag 31-60</td><td>55</td><td>8%</td><td>4</td></tr>
-          <tr><td>Phase 3</td><td>Tag 61-90</td><td>65</td><td>10%</td><td>6</td></tr>
-          <tr><td class="cell-accent">Phase 4</td><td>Tag 90+</td><td>70+</td><td>12%+</td><td>8+</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <div class="card">
-        <h3>Ampel-System (Traffic Light)</h3>
-        <ul>
-          <li><span class="green" style="font-weight:700;">GRÜN</span>: >= 100% des Phase-Targets</li>
-          <li><span class="yellow" style="font-weight:700;">GELB</span>: >= 80% des Phase-Targets</li>
-          <li><span class="red" style="font-weight:700;">ROT</span>: < 80% des Phase-Targets</li>
-        </ul>
-        <p style="margin-top: 16px;">Checkpoint Alerts an Tag 30, 60, 90 via Telegram: "Performance-Review fällig!"</p>
-      </div>
-      <div class="card" style="margin-top: 16px;">
-        <h3>Einwandbehandlung Library</h3>
-        <p>44 vorgeschriebene Skripte mit LARC-Struktur + War Stories. Fuzzy-Matching ordnet Lost Reasons automatisch dem passenden Skript zu.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- SLIDE 9: TEIL 3 - ICP FEEDBACK LOOP -->
-<!-- ============================================================ -->
-<div class="slide" id="s9">
-  <span class="tag tag-green">Teil 3: ICP Feedback</span>
-  <h1>256 Calls analysiert.<br><span class="highlight">ICP komplett neu validiert.</span></h1>
-  <div class="grid-3" style="margin-top: 24px;">
+  <span class="tag tag-green">Learning System</span>
+  <h1>Was das Team auf Calls hört,<br><span class="highlight">verändert das Targeting.</span></h1>
+  <p style="margin-bottom: 12px;">256 Calls analysiert. Das CRM hatte die Antworten die ganze Zeit. Man musste sie nur systematisch auswerten.</p>
+  <div class="grid-3" style="margin-top: 16px;">
     <div class="card metric">
       <div class="number red">52%</div>
-      <div class="label">Gatekeeper-Blockade<br>115 von 220 Calls</div>
+      <div class="label">Gatekeeper-Blockade<br>Anruf kommt nie an</div>
     </div>
     <div class="card metric">
       <div class="number yellow">7%</div>
-      <div class="label">Echtes Engagement<br>(Score >=6, >2 min)</div>
+      <div class="label">Echtes Engagement<br>Score 6+, länger als 2 Min</div>
     </div>
     <div class="card metric">
-      <div class="number highlight">48%</div>
-      <div class="label">Connected Rate<br>(>90 Sek Gespräche)</div>
+      <div class="number highlight">3</div>
+      <div class="label">Schichten des Problems<br>Nicht eine, drei.</div>
     </div>
   </div>
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <h3>Was die Calls gezeigt haben</h3>
+      <ul>
+        <li><span class="red" style="font-weight:600;">Gatekeeper:</span> Über die Hälfte der Calls scheitert, bevor jemand ans Telefon geht. Das ist kein Marktproblem, das ist Vorbereitung.</li>
+        <li><span class="yellow" style="font-weight:600;">Bewerber-Überflutung:</span> Firmen ertrinken in Bewerbungen. 100-300 pro Stelle. Aber die Qualität stimmt nicht.</li>
+        <li><span class="orange" style="font-weight:600;">Recruiter-Sättigung:</span> HR-Leiter bekommen 5-15 Cold-Outreach pro Woche. Jeder sagt dasselbe.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Was sich geändert hat</h3>
+      <ul>
+        <li><span class="red" style="font-weight:600;">Raus aus dem ICP:</span> Firmen unter 50 MA, generische IT-Rollen, nur 1-2 offene Stellen</li>
+        <li><span class="green" style="font-weight:600;">Rein in den ICP:</span> Tech-Scaleups mit spezialisierten Rollen, die eben NICHT in 200 Bewerbungen ertrinken</li>
+        <li><span class="green" style="font-weight:600;">Neuer Pitch-Kern:</span> Nicht "Wir haben Kandidaten", sondern "Wir filtern die 3 richtigen aus euren 300 Bewerbungen"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- S9: LEARNING SYSTEM – ADS & OUTBOUND -->
+<!-- ============================================================ -->
+<div class="slide" id="s9">
+  <span class="tag tag-green">Learning System</span>
+  <h1>Calls füttern nicht nur das Training.<br><span class="highlight">Sie füttern Ads, Outbound und Content.</span></h1>
   <div class="grid-2" style="margin-top: 24px;">
     <div class="card">
-      <h3>3 Schichten des Problems</h3>
+      <h3>Was aus dem Call-Analyse-Tab fließt</h3>
       <ul>
-        <li><span class="red" style="font-weight:600;">Schicht 1: Gatekeeper</span> &mdash; 52% aller Calls kommen nie an</li>
-        <li><span class="yellow" style="font-weight:600;">Schicht 2: Bewerber-Überflutung</span> &mdash; 100-300 Bewerbungen, 0 passend</li>
-        <li><span class="orange" style="font-weight:600;">Schicht 3: Recruiter-Sättigung</span> &mdash; 5-15 Cold-Outreach/Woche pro Entscheider</li>
+        <li><span class="white">Lost Reasons</span> zeigen, welche Einwände gehäuft kommen. Wenn "zu viele Bewerbungen" in 10+ Calls auftaucht, ist das kein Einzelfall. Das ist ein Markttrend.</li>
+        <li><span class="white">Call Summaries</span> liefern die exakte Sprache der Zielgruppe. Wie beschreiben HR-Leiter ihr Problem? In welchen Worten? Das wird zum Ad Copy.</li>
+        <li><span class="white">Erfolgreiche Calls</span> (Score 7+) zeigen, welcher Opener, welcher Pitch und welche Frage funktioniert hat. Das wird zur Outbound-Vorlage.</li>
       </ul>
     </div>
     <div class="card">
-      <h3>ICP Shift</h3>
+      <h3>Wohin die Daten fließen</h3>
       <ul>
-        <li><span class="red" style="font-weight:600;">RAUS:</span> <50 MA, generische IT-Rollen, 1-2 offene Stellen</li>
-        <li><span class="green" style="font-weight:600;">REIN:</span> Tech-Scaleups (Series A/B, 30-100 MA), spezialisierte Rollen (DevOps, ML, Security)</li>
-        <li><span class="green" style="font-weight:600;">REIN:</span> Mittelstand mit Tech-Transformation, kein internes Tech-Recruiting</li>
+        <li><span class="highlight" style="font-weight:600;">Outbound-Listen:</span> ICP-Shift ändert, wen wir überhaupt anrufen. Firmengröße, Rollentyp, Branche – alles datengetrieben.</li>
+        <li><span class="highlight" style="font-weight:600;">Email-Cadences:</span> Subject Lines basieren auf den Einwänden, die am häufigsten kommen. Nicht auf Vermutungen.</li>
+        <li><span class="highlight" style="font-weight:600;">Ad Copy:</span> Voice-of-Customer direkt aus Transkripten. Die Sprache der Zielgruppe, nicht unsere eigene.</li>
+        <li><span class="highlight" style="font-weight:600;">Landing Pages:</span> Pain Points aus Call-Daten werden zu Headlines und Testimonial-Triggern.</li>
       </ul>
     </div>
   </div>
+  <p style="margin-top: 16px; font-size: 0.95rem;">Die Reps merken es nicht mal. Sie telefonieren einfach. Das System hört zu und leitet die Insights weiter.</p>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 10: ICP PITCH SHIFT -->
+<!-- S10: ARCHITEKTUR -->
 <!-- ============================================================ -->
 <div class="slide" id="s10">
-  <span class="tag tag-green">ICP Feedback: Pitch</span>
-  <h1>Vom "Wir haben Kandidaten"<br>zum <span class="highlight">"Wir filtern den Müll"</span></h1>
-  <div class="grid-2" style="margin-top: 32px;">
-    <div class="card" style="border-color: rgba(239,68,68,0.3);">
-      <h3 style="color: var(--red);">Alter Pitch</h3>
-      <p class="big-quote" style="font-size: 1.3rem; border-color: var(--red);">
-        "Wir haben passende Kandidaten für Ihre offene Stelle."
-      </p>
-      <p style="margin-top: 16px;">Problem: Das sagen alle 15 Recruiter die diese Woche anrufen. Null Differenzierung.</p>
+  <span class="tag tag-accent">Architektur</span>
+  <h1>Der Stack</h1>
+  <p class="subtitle">Python, CRM API, Transkription, AI Scoring, Google Sheets, Telegram.</p>
+  <div class="grid-2" style="margin-top: 16px;">
+    <div>
+      <div class="flow" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+        <div class="flow-box" style="width: 100%; text-align: center; border-color: var(--accent);">
+          <strong>Close.com / HubSpot API</strong><br>
+          <span style="font-size:0.8rem; color: var(--text-muted);">Calls, Emails, Meetings, Leads, Pipeline</span>
+        </div>
+        <div style="text-align:center; width:100%; color: var(--accent);">&darr;</div>
+        <div class="flow-box" style="width: 100%; text-align: center;">
+          <strong>Python Bot</strong> (Cron, Mo-Fr 18:00)<br>
+          <span style="font-size:0.8rem; color: var(--text-muted);">Pagination, Rate Limiting, Retry mit Backoff</span>
+        </div>
+        <div style="text-align:center; width:100%; color: var(--accent);">&darr;</div>
+        <div class="flow-box" style="width: 100%; text-align: center; border-color: var(--green);">
+          <strong>Deepgram</strong> (Transkription) + <strong>Claude</strong> (Scoring)<br>
+          <span style="font-size:0.8rem; color: var(--text-muted);">Transkript + 6-Dimensionen-Scoring pro Call</span>
+        </div>
+        <div style="text-align:center; width:100%; color: var(--accent);">&darr;</div>
+        <div class="flow-box" style="width: 100%; text-align: center; border-color: var(--orange);">
+          <strong>Google Sheets</strong> (8 Tabs) + <strong>Telegram</strong> (Alerts)
+        </div>
+      </div>
     </div>
-    <div class="card" style="border-color: rgba(34,197,94,0.3);">
-      <h3 style="color: var(--green);">Neuer Pitch (aus Call-Daten)</h3>
-      <p class="big-quote" style="font-size: 1.3rem; border-color: var(--green);">
-        "100 Bewerbungen, 0 passende? Wir liefern 3 validierte. Topgrading-geprüft. Garantie."
-      </p>
-      <p style="margin-top: 16px;">Adressiert das ECHTE Problem: Quantität da, Qualität nicht. RC als Filter, nicht als Lieferant.</p>
+    <div>
+      <div class="card" style="margin-bottom: 12px;">
+        <h3>CRM-Anbindung</h3>
+        <p>Aktuell für Close.com und HubSpot gebaut. Gleiche Struktur, unterschiedliche Endpoints. Andere CRMs (Pipedrive, Salesforce) sind straightforward anzubinden, weil die Logik vom CRM entkoppelt ist.</p>
+      </div>
+      <div class="card">
+        <h3>8 Dashboard-Tabs</h3>
+        <ul style="font-size: 0.9rem;">
+          <li>Master Dashboard (Scorecards, Gap-Matrix, Trends)</li>
+          <li>Daily KPIs (Rohdaten pro Rep pro Tag)</li>
+          <li>Call Analysis (pro Call, mit Transkript-Auszug)</li>
+          <li>Email Analysis (pro Email, 6 Dimensionen)</li>
+          <li>Lost Reasons (Einwand-Häufigkeit)</li>
+          <li>Einwand-Bibliothek (44 LARC-Skripte)</li>
+          <li>Leaderboards (wöchentliche Rankings)</li>
+          <li>Individuelle Coaching-Tabs (pro Rep)</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <p style="margin-top: 24px; font-size: 1rem;">
-    <span class="white" style="font-weight: 600;">Datenquelle:</span> Lost Reasons Tab + Call Summaries aus dem Leadership Board. Kein Bauchgefühl, sondern 256 analysierte Gespräche.
-  </p>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 11: CLOSED LOOP ZUSAMMENFASSUNG -->
+<!-- S11: DER LOOP -->
 <!-- ============================================================ -->
 <div class="slide" id="s11">
-  <span class="tag tag-accent">Full Loop</span>
-  <h1>Der geschlossene Kreislauf:<br><span class="highlight">Track &rarr; Diagnose &rarr; Train &rarr; ICP Update</span></h1>
+  <span class="tag tag-accent">Zusammenfassung</span>
+  <h1>Ein geschlossener Kreislauf.<br><span class="highlight">Track, Diagnose, Train, Learn.</span></h1>
   <div style="margin-top: 32px;">
     <div class="flow" style="justify-content: center; gap: 16px;">
       <div class="flow-box" style="border-color: var(--accent); padding: 16px 24px;">
-        <strong>1. TRACK</strong><br>
-        <span style="font-size:0.85rem; color: var(--text-muted);">Close.com API<br>Calls, Emails, Meetings</span>
+        <strong>TRACK</strong><br>
+        <span style="font-size:0.85rem; color: var(--text-muted);">CRM-Daten ziehen<br>Calls transkribieren</span>
       </div>
       <span class="flow-arrow" style="font-size: 2rem;">&rarr;</span>
-      <div class="flow-box" style="border-color: var(--green); padding: 16px 24px;">
-        <strong>2. DIAGNOSE</strong><br>
-        <span style="font-size:0.85rem; color: var(--text-muted);">Gap-Detection Matrix<br>Call Scoring (6 Dim.)</span>
+      <div class="flow-box" style="border-color: var(--red); padding: 16px 24px;">
+        <strong>RED FLAGS</strong><br>
+        <span style="font-size:0.85rem; color: var(--text-muted);">Gap-Matrix<br>Call Scoring (6 Dim.)</span>
       </div>
       <span class="flow-arrow" style="font-size: 2rem;">&rarr;</span>
       <div class="flow-box" style="border-color: var(--orange); padding: 16px 24px;">
-        <strong>3. TRAIN</strong><br>
-        <span style="font-size:0.85rem; color: var(--text-muted);">Individuelles Coaching<br>LARC, SPIN, Ramping</span>
+        <strong>COACH</strong><br>
+        <span style="font-size:0.85rem; color: var(--text-muted);">Individuelle Empfehlung<br>Framework + Training</span>
       </div>
       <span class="flow-arrow" style="font-size: 2rem;">&rarr;</span>
-      <div class="flow-box" style="border-color: var(--yellow); padding: 16px 24px;">
-        <strong>4. ICP UPDATE</strong><br>
-        <span style="font-size:0.85rem; color: var(--text-muted);">Lost Reasons + Einwände<br>&rarr; Targeting + Pitch</span>
+      <div class="flow-box" style="border-color: var(--green); padding: 16px 24px;">
+        <strong>LEARN</strong><br>
+        <span style="font-size:0.85rem; color: var(--text-muted);">ICP Update, Ads,<br>Outbound, Pitch</span>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 12px; color: var(--accent); font-size: 2rem;">
-      &uarr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr;
-    </div>
   </div>
-  <div class="grid-2" style="margin-top: 24px;">
+  <div class="grid-2" style="margin-top: 32px;">
     <div class="card">
-      <h3>Was das NICHT ist</h3>
+      <h3>Was das nicht ist</h3>
       <ul>
-        <li>Kein Reporting-Tool das schöne Charts zeigt</li>
-        <li>Kein Ersatz für menschliches Sales Coaching</li>
-        <li>Kein "AI Agent der Calls für euch macht"</li>
+        <li>Kein Reporting-Tool das Charts zeigt und dann nichts passiert</li>
+        <li>Kein AI-Agent der für euch telefoniert</li>
+        <li>Kein Ersatz für echtes Coaching-Gespräch am Montag</li>
       </ul>
     </div>
     <div class="card">
-      <h3>Was das IST</h3>
+      <h3>Was das ist</h3>
       <ul>
-        <li>Ein System das jedem Rep sagt WAS er üben soll</li>
-        <li>Ein ICP-Validierungs-Tool basierend auf echten Daten</li>
-        <li>Ein Frühwarnsystem für Marktverschiebungen</li>
+        <li>Ein System das jedem Rep sagt, was er diese Woche üben soll</li>
+        <li>Ein Frühwarnsystem bevor Probleme zu Kündigungen werden</li>
+        <li>Ein Feedback-Loop der Marketing, Ads und Outbound mit echten Daten füttert</li>
       </ul>
     </div>
   </div>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 12: GITHUB BLUEPRINT -->
+<!-- S12: SELBST BAUEN -->
 <!-- ============================================================ -->
 <div class="slide" id="s12">
   <span class="tag tag-accent">Blueprint</span>
-  <h1>Selbst bauen?<br><span class="highlight">Alles Open Source.</span></h1>
+  <h1>Alles auf GitHub.<br><span class="highlight">Copy-paste-ready.</span></h1>
   <div class="grid-2" style="margin-top: 24px;">
     <div class="card">
       <h3>Was du brauchst</h3>
       <ul>
-        <li><span class="white">CRM API Key</span> (Close.com oder HubSpot)</li>
-        <li><span class="white">Google Sheets API</span> (Service Account oder OAuth)</li>
-        <li><span class="white">Claude API Key</span> (für Call Scoring)</li>
-        <li><span class="white">Deepgram API Key</span> (für Transkription)</li>
-        <li><span class="white">Telegram Bot</span> (optional, für Daily Briefings)</li>
-        <li>Python 3.10+, ~500 Zeilen Core-Code</li>
+        <li>CRM API Key (Close.com oder HubSpot)</li>
+        <li>Google Sheets API Zugang</li>
+        <li>Claude API Key (für Call Scoring)</li>
+        <li>Deepgram API Key (für Transkription)</li>
+        <li>Optional: Telegram Bot für tägliche Alerts</li>
+        <li>Python 3.10+</li>
       </ul>
     </div>
     <div class="card">
-      <h3>Setup in 3 Schritten</h3>
-      <ul>
-        <li><span class="highlight" style="font-weight:700;">1.</span> CRM API anbinden (Close.com oder HubSpot)</li>
-        <li><span class="highlight" style="font-weight:700;">2.</span> Targets definieren (Ramping Phasen + KPIs)</li>
-        <li><span class="highlight" style="font-weight:700;">3.</span> Cron Job: täglich 18:00 CET laufen lassen</li>
-      </ul>
-      <p style="margin-top: 16px; color: var(--text-muted); font-size: 0.9rem;">
-        GitHub Repo mit komplettem Blueprint, Copy-Paste-ready für Close.com und HubSpot.
-      </p>
+      <h3>Repo-Struktur</h3>
+      <div class="code-block" style="font-size: 0.78rem; margin-top: 4px;">
+sales-leadership-board/
+  main_closecom.py       <span class="cm"># Close.com Entry Point</span>
+  main_hubspot.py        <span class="cm"># HubSpot Entry Point</span>
+  crm/
+    closecom.py          <span class="cm"># API Client + Pagination</span>
+    hubspot.py           <span class="cm"># API Client + Pagination</span>
+  scoring/
+    gap_matrix.py        <span class="cm"># Red Flag Diagnose</span>
+    call_scorer.py       <span class="cm"># Claude Call Scoring</span>
+  training/
+    ramping.py           <span class="cm"># 4-Phasen Targets</span>
+    objection_library.py <span class="cm"># 44 LARC-Skripte</span>
+  config/targets.json    <span class="cm"># Rep Config</span>
+      </div>
     </div>
   </div>
-  <div class="code-block" style="margin-top: 20px; font-size: 0.8rem; max-height: 180px; overflow-y: auto;">
-<span class="cm"># Minimaler Close.com API Pull</span>
-<span class="kw">import</span> requests, base64
-
-CLOSE_KEY = <span class="str">"api_xxxxx"</span>
-headers = {<span class="str">"Authorization"</span>: <span class="str">f"Basic {base64.b64encode(f'{CLOSE_KEY}:'.encode()).decode()}"</span>}
-
-calls = requests.get(<span class="str">"https://api.close.com/api/v1/activity/call/"</span>,
-    headers=headers,
-    params={<span class="str">"date_created__gte"</span>: <span class="str">"2026-04-09"</span>, <span class="str">"_limit"</span>: <span class="num">100</span>}).json()
-
-<span class="kw">for</span> c <span class="kw">in</span> calls[<span class="str">"data"</span>]:
-    <span class="kw">print</span>(c[<span class="str">"user_name"</span>], c[<span class="str">"duration"</span>], c[<span class="str">"direction"</span>])
-  </div>
+  <p style="margin-top: 20px; font-size: 0.95rem;">Drei Schritte: API anbinden, Targets definieren, Cron Job einstellen. Läuft danach jeden Abend alleine.</p>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 13: ERGEBNISSE -->
+<!-- S13: TAKEAWAYS -->
 <!-- ============================================================ -->
 <div class="slide" id="s13">
-  <span class="tag tag-green">Ergebnisse</span>
-  <h1>Was sich verändert hat</h1>
-  <div class="grid-3" style="margin-top: 32px;">
-    <div class="card metric">
-      <div class="number green">256</div>
-      <div class="label">Calls analysiert<br>in 3 Wochen</div>
-    </div>
-    <div class="card metric">
-      <div class="number green">3</div>
-      <div class="label">Individuelle Coaching-<br>Pläne statt 1 Diagnose</div>
-    </div>
-    <div class="card metric">
-      <div class="number green">ICP</div>
-      <div class="label">Komplett revalidiert<br>basierend auf Daten</div>
-    </div>
-  </div>
-  <div class="grid-2" style="margin-top: 28px;">
-    <div class="card">
-      <h3>Vorher</h3>
-      <ul>
-        <li>5-Zeilen if/elif: eine Diagnose für alle</li>
-        <li>2-Stage Funnel (Dial &rarr; Meeting), Rest unsichtbar</li>
-        <li>ICP basierend auf Bauchgefühl</li>
-        <li>Speed-to-Lead Alarm erst nach 60 Minuten</li>
-        <li>Kein Einwand-Tracking, kein Lost-Reason Enforcement</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Nachher</h3>
-      <ul>
-        <li>Gap-Detection Matrix: 9 Diagnose-Kombinationen</li>
-        <li>5-Stage Funnel + Call Scoring (6 Dimensionen)</li>
-        <li>ICP aus 256 Calls + Marktdaten revalidiert</li>
-        <li>Speed-to-Lead: 5-Min-Benchmark (Gong Research)</li>
-        <li>44 Einwand-Skripte mit Fuzzy-Matching auf Lost Reasons</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- SLIDE 14: TAKEAWAYS -->
-<!-- ============================================================ -->
-<div class="slide" id="s14">
   <span class="tag tag-accent">Takeaways</span>
-  <h1>3 Dinge die ihr<br><span class="highlight">heute mitnehmen könnt</span></h1>
-  <div style="margin-top: 40px; max-width: 800px;">
+  <h1>Drei Dinge</h1>
+  <div style="margin-top: 40px; max-width: 780px;">
     <div style="margin-bottom: 32px;">
-      <h2><span class="highlight">1.</span> Reporting ist nicht Coaching</h2>
-      <p>Gong zeigt euch WAS passiert. Ein Coaching-System sagt jedem Rep WAS ER ÜBEN SOLL. Das sind zwei verschiedene Probleme. Die meisten Tools lösen nur das erste.</p>
+      <h2><span class="highlight">1.</span> Reporting und Coaching sind zwei verschiedene Dinge</h2>
+      <p>Ein Dashboard das zeigt, dass die Connect Rate bei 8% liegt, ist Reporting. Ein System das sagt "Dein Opener ist das Problem, teste diese drei Varianten" ist Coaching. Die meisten Tools machen nur das Erste.</p>
     </div>
     <div style="margin-bottom: 32px;">
-      <h2><span class="highlight">2.</span> Call-Recordings sind eine Goldmine</h2>
-      <p>Nicht für "Deal Intelligence". Sondern für ICP-Validierung, Pitch-Optimierung und Einwand-Bibliotheken. Eure Prospects sagen euch GENAU was sie brauchen. Ihr müsstet nur systematisch zuhören.</p>
+      <h2><span class="highlight">2.</span> Call-Recordings sind eine Goldmine, die kaum jemand nutzt</h2>
+      <p>Nicht für "Deal Intelligence". Sondern für ICP-Validierung, Pitch-Optimierung, Ad Copy und Einwand-Skripte. Eure Prospects sagen euch genau was sie brauchen. Die Daten sind da, sie liegen nur in eurem CRM und keiner schaut rein.</p>
     </div>
     <div>
-      <h2><span class="highlight">3.</span> Ihr braucht kein 17.000 EUR Tool</h2>
-      <p>Python + CRM API + Claude + Deepgram. 15 EUR/Monat. In 3 Tagen gebaut. Der Code ist auf GitHub. Copy-paste-ready für Close.com und HubSpot.</p>
+      <h2><span class="highlight">3.</span> Das Tooling dafür existiert, man muss es nur zusammenstecken</h2>
+      <p>CRM API, Transkription, AI Scoring, Google Sheets. Kein Hexenwerk. Der Blueprint liegt auf GitHub, für Close.com und HubSpot. Wer das für sein Team aufsetzen will, kann sich den Code ziehen.</p>
     </div>
   </div>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 15: Q&A -->
+<!-- S14: Q&A -->
 <!-- ============================================================ -->
-<div class="slide" id="s15">
+<div class="slide" id="s14">
   <span class="tag tag-accent">Q&A</span>
-  <h1 style="font-size: 4rem;">Fragen?</h1>
-  <p class="subtitle" style="margin-top: 24px;">Christoph Erler &mdash; Erler Ventures</p>
-  <div class="grid-3" style="margin-top: 40px; max-width: 800px;">
+  <h1 style="font-size: 3.5rem;">Fragen?</h1>
+  <p class="subtitle" style="margin-top: 24px;">Christoph Erler – Erler Ventures</p>
+  <div class="grid-3" style="margin-top: 40px; max-width: 700px;">
     <div class="card" style="text-align: center;">
       <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 4px;">LinkedIn</p>
       <p style="font-weight: 600;">Christoph Erler</p>
     </div>
     <div class="card" style="text-align: center;">
       <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 4px;">GitHub</p>
-      <p style="font-weight: 600;">Sales Leadership Board<br><span style="font-size: 0.85rem; color: var(--accent);">Blueprint</span></p>
+      <p style="font-weight: 600; font-size: 0.95rem;">sales-leadership-board</p>
     </div>
     <div class="card" style="text-align: center;">
       <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 4px;">Substack</p>
@@ -894,8 +750,8 @@ calls = requests.get(<span class="str">"https://api.close.com/api/v1/activity/ca
 </div><!-- /deck -->
 
 <div class="bottom-bar">
-  <span>Sales Leadership Board &mdash; Christoph Erler</span>
-  <span class="slide-counter"><span id="current">1</span> / <span id="total">15</span></span>
+  <span>Sales Leadership Board – Christoph Erler</span>
+  <span class="slide-counter"><span id="current">1</span> / <span id="total">14</span></span>
 </div>
 
 <script>
@@ -921,7 +777,6 @@ document.addEventListener('keydown', e => {
   if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
 });
 
-// Touch support
 let touchStartX = 0;
 document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
 document.addEventListener('touchend', e => {
@@ -929,7 +784,6 @@ document.addEventListener('touchend', e => {
   if (Math.abs(diff) > 50) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
 });
 
-// Click navigation (left third = back, rest = forward)
 document.querySelector('.deck').addEventListener('click', e => {
   if (e.target.closest('.bottom-bar') || e.target.closest('a')) return;
   const x = e.clientX / window.innerWidth;
