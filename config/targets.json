@@ -1,0 +1,72 @@
+{
+  "reps": {
+    "Jane Smith": {
+      "ramping_level": "auto",
+      "start_date": "2026-03-01"
+    },
+    "Max Mueller": {
+      "ramping_level": "phase_4_fully_ramped"
+    },
+    "Anna Weber": {
+      "ramping_level": "auto",
+      "start_date": "2026-02-01"
+    }
+  },
+  "targets": {
+    "phase_1_month_1": {
+      "calls_per_day": 40,
+      "connect_rate": 0.05,
+      "discovery_calls_booked_per_week": 2,
+      "potential_revenue_eur": 30000,
+      "speed_to_lead_minutes": 60,
+      "emails_sent_per_day": 15,
+      "emails_per_day": 15,
+      "meetings_per_day": 0.4,
+      "pipeline": 30000
+    },
+    "phase_2_month_2": {
+      "calls_per_day": 55,
+      "connect_rate": 0.08,
+      "discovery_calls_booked_per_week": 4,
+      "potential_revenue_eur": 60000,
+      "speed_to_lead_minutes": 30,
+      "emails_sent_per_day": 25,
+      "emails_per_day": 25,
+      "meetings_per_day": 0.8,
+      "pipeline": 60000
+    },
+    "phase_3_month_3": {
+      "calls_per_day": 65,
+      "connect_rate": 0.10,
+      "discovery_calls_booked_per_week": 6,
+      "potential_revenue_eur": 100000,
+      "speed_to_lead_minutes": 15,
+      "emails_sent_per_day": 30,
+      "emails_per_day": 30,
+      "meetings_per_day": 1.2,
+      "pipeline": 100000
+    },
+    "phase_4_fully_ramped": {
+      "calls_per_day": 70,
+      "connect_rate": 0.12,
+      "discovery_calls_booked_per_week": 8,
+      "potential_revenue_eur": 150000,
+      "speed_to_lead_minutes": 10,
+      "emails_sent_per_day": 40,
+      "emails_per_day": 40,
+      "meetings_per_day": 1.6,
+      "pipeline": 150000
+    }
+  },
+  "ampel": {
+    "green_threshold": 1.0,
+    "yellow_threshold": 0.8
+  },
+  "thresholds": {
+    "opener_problem_connect_rate": 0.08,
+    "pitch_problem_connect_rate": 0.10,
+    "pitch_problem_conv_to_meeting": 0.10,
+    "depth_problem_avg_duration_seconds": 180,
+    "speed_problem_minutes": 30
+  }
+}
