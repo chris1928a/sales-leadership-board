@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transcripts as a Goldmine v2 — Chris Erler · Bottleneck 03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F05A28;
+    --orange-soft: #FDEAE1;
+    --navy: #0D2544;
+    --navy-soft: #1A3558;
+    --cream: #F7F6F1;
+    --card: #EFEBE5;
+    --gray: #5C6B7A;
+    --gray-light: #8A97A3;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    height: 100%;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow: hidden;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  .deck {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: 6vh 9vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    overflow: hidden;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .eyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    font-size: clamp(3rem, 6.5vw, 6rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  h1 .accent { color: var(--orange); }
+  h2 {
+    font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+  }
+  h2 .accent { color: var(--orange); }
+  .lede {
+    font-size: clamp(1.05rem, 1.5vw, 1.4rem);
+    color: var(--gray);
+    max-width: 62ch;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  .slide-footer {
+    position: absolute;
+    left: 9vw;
+    right: 9vw;
+    bottom: 3vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--gray-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .page-no { color: var(--orange); font-weight: 700; }
+
+  /* Nav */
+  .nav {
+    position: fixed;
+    bottom: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+  }
+  .nav:hover { opacity: 1; }
+  .nav button {
+    background: var(--navy);
+    color: var(--cream);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Card rows */
+  .cards {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.3rem 1.6rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+  .card-number {
+    background: var(--orange);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .card-body h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .card-body p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* 6-dim grid */
+  .grid-6 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .dim-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+  }
+  .dim-card .pill {
+    background: var(--orange);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+  .dim-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .dim-card p {
+    color: var(--gray);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .dim-card.usp {
+    border-left: 4px solid var(--orange);
+    background: #F3E6DD;
+  }
+  .usp-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+  .dim-card .analyzed {
+    margin-top: 0.55rem;
+    padding-top: 0.45rem;
+    border-top: 1px solid rgba(13, 37, 68, 0.1);
+    font-size: 0.78rem;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+  .dim-card .analyzed .lbl {
+    color: var(--orange);
+    font-weight: 800;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* Why-score callout */
+  .why-box {
+    margin-top: 1.2rem;
+    padding: 0.95rem 1.3rem;
+    background: var(--navy);
+    color: var(--cream);
+    border-radius: 10px;
+    max-width: 900px;
+  }
+  .why-box .lbl {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+  }
+  .why-box .body {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .why-box .body strong {
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  /* Big stat */
+  .big-stat {
+    font-size: clamp(5rem, 11vw, 10rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--orange);
+    margin: 0.5rem 0 1rem;
+  }
+
+  /* 3-step / compare */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    max-width: 900px;
+  }
+  .compare-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1rem;
+    align-items: center;
+    background: var(--card);
+    padding: 1rem 1.4rem;
+    border-radius: 12px;
+  }
+  .compare-label {
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 1.05rem;
+  }
+  .compare-text {
+    color: var(--navy);
+    font-size: 1.05rem;
+  }
+
+  /* Pipeline */
+  .pipeline {
+    display: flex;
+    gap: 0.8rem;
+    align-items: stretch;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .pipe-step {
+    flex: 1;
+    min-width: 180px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.2rem;
+    position: relative;
+  }
+  .pipe-step .n {
+    font-size: 0.75rem;
+    color: var(--orange);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .pipe-step h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .pipe-step p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.4;
+  }
+  .pipe-meta {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    font-size: 0.95rem;
+    color: var(--gray);
+  }
+  .pipe-meta strong { color: var(--navy); font-weight: 700; }
+
+  /* Matrix */
+  .matrix {
+    display: grid;
+    grid-template-columns: 140px repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.82rem;
+  }
+  .matrix-head {
+    padding: 0.6rem;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    text-align: center;
+  }
+  .matrix-row-label {
+    padding: 0.8rem 0.6rem;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    display: flex;
+    align-items: center;
+  }
+  .matrix-cell {
+    background: var(--card);
+    padding: 0.9rem;
+    border-radius: 8px;
+    color: var(--navy);
+    line-height: 1.35;
+    font-weight: 500;
+  }
+  .matrix-cell.hot { background: var(--orange); color: white; font-weight: 700; }
+
+  /* Shifts slide */
+  .shifts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .shift {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    position: relative;
+  }
+  .shift .shift-n {
+    position: absolute;
+    top: -14px;
+    left: 1.4rem;
+    background: var(--orange);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .shift h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0.5rem 0 0.5rem;
+  }
+  .shift p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+  }
+  .shift .metric {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  /* Takeaway */
+  .takeaways {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    max-width: 900px;
+  }
+  .tk {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 1.2rem;
+    align-items: start;
+    background: var(--card);
+    padding: 1.3rem 1.6rem;
+    border-radius: 14px;
+  }
+  .tk .n {
+    background: var(--orange);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+  .tk-body strong { color: var(--navy); font-weight: 700; }
+  .tk-body { font-size: 1.05rem; line-height: 1.5; color: var(--navy); }
+  .tk-body em { color: var(--orange); font-style: normal; font-weight: 700; }
+
+  .cta-row {
+    margin-top: 1.8rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .cta-row a {
+    color: var(--orange);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.05rem;
+  }
+
+  /* Analytics slide */
+  .analytics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+  .signal {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.3rem;
+  }
+  .signal .n {
+    color: var(--orange);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .signal h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .signal p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.4;
+  }
+  .north-star {
+    margin-top: 1.8rem;
+    background: var(--navy);
+    color: var(--cream);
+    border-radius: 14px;
+    padding: 1.5rem 1.8rem;
+    max-width: 780px;
+  }
+  .north-star .label {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .north-star .metric {
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  /* Blockquote / dashboard lie slide */
+  .quote {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 1.4rem 1.8rem;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 500;
+    max-width: 780px;
+    margin: 1rem 0 1.5rem;
+    border-left: 5px solid var(--orange);
+  }
+  .reality {
+    display: grid;
+    gap: 0.6rem;
+    max-width: 900px;
+  }
+  .reality-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1rem;
+    align-items: center;
+    background: var(--card);
+    padding: 0.9rem 1.3rem;
+    border-radius: 10px;
+  }
+  .reality-row .k {
+    font-weight: 800;
+    color: var(--orange);
+    font-size: 1rem;
+  }
+  .reality-row .v { color: var(--navy); font-size: 1rem; }
+  .punchline {
+    margin-top: 1.3rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    max-width: 780px;
+  }
+
+  /* Closed loop slide */
+  .loop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+  }
+  .loop-step {
+    background: var(--card);
+    padding: 1.2rem;
+    border-radius: 12px;
+    position: relative;
+  }
+  .loop-step .day {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .loop-step h4 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .loop-step p {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.4;
+  }
+  .loop-punch {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--orange);
+  }
+
+  @media (max-width: 900px) {
+    .grid-6, .shifts, .analytics { grid-template-columns: 1fr; }
+    .matrix { grid-template-columns: 1fr; }
+    .loop { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- SLIDE 1 — TITLE -->
+<section class="slide active" data-slide="1">
+  <div class="eyebrow">Bottleneck 03 · Chris · 10 min</div>
+  <h1>Transcripts as a <span class="accent">Goldmine.</span></h1>
+  <p class="lede">What changes once your SDRs actually run on AI — in training, routing, and analytics. The operational shift after Phil's foundations and Manu's assets are built.</p>
+  <div class="slide-footer">
+    <span>Chris Erler · Erler Ventures</span>
+    <span class="page-no">01 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 2 — 8 HOUR PROBLEM -->
+<section class="slide" data-slide="2">
+  <div class="eyebrow">The Problem Nobody Admits</div>
+  <div class="big-stat">8 hrs</div>
+  <h2>per rep. <span class="accent">Per week.</span></h2>
+  <p class="lede">That's the honest price of real coaching — listening to every call, marking every beat. 3 reps = 24 hours. 5 reps = your entire week gone.</p>
+  <div style="margin-top:1.2rem;font-size:1.25rem;font-weight:700;color:var(--orange);max-width:780px;">→ No founder has that time. So nobody does it. Coaching becomes a horoscope.</div>
+  <div class="slide-footer">
+    <span>Transcripts as a Goldmine</span>
+    <span class="page-no">02 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 3 — DASHBOARD LIES -->
+<section class="slide" data-slide="3">
+  <div class="eyebrow">Why Your Dashboard Lies</div>
+  <h2>One symptom. <span class="accent">Three diseases.</span></h2>
+  <div class="quote">"Low close rate — fix the pitch."<br><span style="font-size:0.9rem;font-style:normal;opacity:0.7;">— every sales dashboard, every week</span></div>
+  <div class="reality">
+    <div class="reality-row"><div class="k">Rep A</div><div class="v">opens weak. Loses them in the first 30 seconds.</div></div>
+    <div class="reality-row"><div class="k">Rep B</div><div class="v">never asks discovery. Jumps straight to features.</div></div>
+    <div class="reality-row"><div class="k">Rep C</div><div class="v">ends without a concrete next step in the calendar.</div></div>
+  </div>
+  <div class="punchline">Same KPI. Three different root causes. One generic coaching sentence. Nothing moves.</div>
+  <div class="slide-footer">
+    <span>Transcripts as a Goldmine</span>
+    <span class="page-no">03 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 4 — ARCHITECTURE / THE SHIFT -->
+<section class="slide" data-slide="4">
+  <div class="eyebrow">The Shift</div>
+  <h2>Stop listening. <span class="accent">Start scoring.</span></h2>
+  <p class="lede">Nightly pipeline. Runs unattended. 80 lines of Python per CRM.</p>
+  <div class="pipeline">
+    <div class="pipe-step"><div class="n">01 · Pull</div><h4>Close / HubSpot API</h4><p>Every call, every rep, every night.</p></div>
+    <div class="pipe-step"><div class="n">02 · Transcribe</div><h4>Deepgram</h4><p>EU datacenter. Seconds per call.</p></div>
+    <div class="pipe-step"><div class="n">03 · Score</div><h4>Claude</h4><p>Reads the full transcript. Rates 6 dimensions 1–5 against framework rubrics. Returns a verbatim quote from the call as proof for every score.</p></div>
+    <div class="pipe-step"><div class="n">04 · Ship</div><h4>Sheet + Telegram</h4><p>One coaching message per rep by 08:00.</p></div>
+  </div>
+  <div class="pipe-meta">
+    <div>Setup <strong>one evening</strong></div>
+    <div>Run cost <strong>&lt; $50 / month for 10 reps</strong></div>
+    <div>Live at a Recruiting Agency since <strong>March</strong></div>
+  </div>
+  <div class="why-box">
+    <div class="lbl">Why score every single call?</div>
+    <div class="body">Each call is three signals in one: a <strong>coaching lesson</strong> for the rep, a <strong>lost-reason pattern</strong> for marketing, a <strong>market pulse</strong> for the founder. Skip scoring, leave all three in the ground.</div>
+  </div>
+  <div class="slide-footer">
+    <span>Transcripts as a Goldmine</span>
+    <span class="page-no">04 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 5 — 6 DIM STACK -->
+<section class="slide" data-slide="5">
+  <div class="eyebrow">The Core</div>
+  <h2>The 6-Dimension <span class="accent">Scoring Stack.</span></h2>
+  <p class="lede">Each dimension maps to a proven framework with a book behind it. Not vibes.</p>
+  <div class="grid-6">
+    <div class="dim-card">
+      <div class="pill">01</div>
+      <h3>Opener</h3>
+      <p>Pattern interrupt or voicemail. First 30s decide everything. <em>Chris Voss.</em></p>
+      <div class="analyzed"><span class="lbl">Analyzed</span>Opening line energy, hook quality, time to first question, prospect attention within 30s.</div>
+    </div>
+    <div class="dim-card">
+      <div class="pill">02</div>
+      <h3>Pitch</h3>
+      <p>SPIN-style problem framing. Not feature dumping. <em>Rackham.</em></p>
+      <div class="analyzed"><span class="lbl">Analyzed</span>Problem-to-feature ratio, SPIN structure, tailoring to the prospect's segment.</div>
+    </div>
+    <div class="dim-card usp">
+      <div class="pill">03</div>
+      <h3>Objection Handling <span class="usp-badge">My USP</span></h3>
+      <p>LARC: Listen · Acknowledge · Reframe · Confirm.</p>
+      <div class="analyzed"><span class="lbl">Analyzed</span>Response latency, LARC adherence, reframe precision, dodge detection, follow-up question quality.</div>
+    </div>
+    <div class="dim-card">
+      <div class="pill">04</div>
+      <h3>Closing</h3>
+      <p>Concrete next step. Date in the calendar. <em>Oren Klaff.</em></p>
+      <div class="analyzed"><span class="lbl">Analyzed</span>Ambiguity in next step, date-and-time specificity, commitment obtained vs assumed.</div>
+    </div>
+    <div class="dim-card usp">
+      <div class="pill">05</div>
+      <h3>Conversation Depth <span class="usp-badge">My USP</span></h3>
+      <p>3 layers of "why" before pitching. <em>Toyota 5-Whys.</em></p>
+      <div class="analyzed"><span class="lbl">Analyzed</span>Number of why-probes, surface vs root-cause questioning, rep-to-prospect listening ratio.</div>
+    </div>
+    <div class="dim-card">
+      <div class="pill">06</div>
+      <h3>Rapport</h3>
+      <p>Mirror, pace, 3-second pause discipline.</p>
+      <div class="analyzed"><span class="lbl">Analyzed</span>Mirroring frequency, pace match, silence discipline, tonal alignment.</div>
+    </div>
+  </div>
+  <div class="why-box">
+    <div class="lbl">Where I built my edge as a coach</div>
+    <div class="body">Dimensions <strong>3 and 5</strong> are where in-person coaching hurts most. Reps learn them slowest. Managers teach them worst. That's exactly where I drilled teams for years. The system now runs that drill every single night.</div>
+  </div>
+  <div class="slide-footer">
+    <span>Transcripts as a Goldmine</span>
+    <span class="page-no">05 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 6 — GAP MATRIX -->
+<section class="slide" data-slide="6">
+  <div class="eyebrow">From Label to Diagnosis</div>
+  <h2>One label. <span class="accent">Nine diagnoses.</span></h2>
+  <p class="lede">Activity × Outcomes. Nine cells, nine coaching paths. This is what separates diagnosis from dashboards.</p>
+  <div class="matrix">
+    <div></div>
+    <div class="matrix-head">Low Activity</div>
+    <div class="matrix-head">Mid Activity</div>
+    <div class="matrix-head">High Activity</div>
+
+    <div class="matrix-row-label">High<br>Outcomes</div>
+    <div class="matrix-cell">Throughput gap — prospecting, speed-to-lead</div>
+    <div class="matrix-cell">On track</div>
+    <div class="matrix-cell hot">Elite — replicate & record</div>
+
+    <div class="matrix-row-label">Mid<br>Outcomes</div>
+    <div class="matrix-cell">Engagement dip — ramping, motivation</div>
+    <div class="matrix-cell">Pick one weakest dimension</div>
+    <div class="matrix-cell">Quality gap — script, framework</div>
+
+    <div class="matrix-row-label">Low<br>Outcomes</div>
+    <div class="matrix-cell">Check-in required</div>
+    <div class="matrix-cell">Volume without conversion — pitch / discovery</div>
+    <div class="matrix-cell hot">Burning the funnel — stop & retrain</div>
+  </div>
+  <div class="slide-footer">
+    <span>Transcripts as a Goldmine</span>
+    <span class="page-no">06 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 7 — CLOSED LOOP -->
+<section class="slide" data-slide="7">
+  <div class="eyebrow">SDR Training — Closed Loop</div>
+  <h2>Coaching that <span class="accent">closes its own loop.</span></h2>
+  <p class="lede">From calendar slot to weekly KPI. The system decides, measures, and re-measures.</p>
+  <div class="loop">
+    <div class="loop-step">
+      <div class="day">Mon 08:00</div>
+      <h4>Weakest dimension drops in Telegram</h4>
+      <p>Rolling 14-day average per rep per dimension.</p>
+    </div>
+    <div class="loop-step">
+      <div class="day">Monday</div>
+      <h4>Manager gets a 90-sec script</h4>
+      <p>Plus the exact framework chapter for that dimension.</p>
+    </div>
+    <div class="loop-step">
+      <div class="day">Mon–Fri</div>
+      <h4>Rep practices on next 5 calls</h4>
+      <p>System records, transcribes, scores in parallel.</p>
+    </div>
+    <div class="loop-step">
+      <div class="day">Next Mon</div>
+      <h4>Same system measures the delta</h4>
+      <p>Did the dimension move? If not, escalate.</p>
+    </div>
+  </div>
+  <div class="loop-punch">→ Coaching becomes a KPI. Not a calendar slot.</div>
+  <div class="slide-footer">
+    <span>Transcripts as a Goldmine</span>
+    <span class="page-no">07 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 8 — LEAD MGMT SHIFTS -->
+<section class="slide" data-slide="8">
+  <div class="eyebrow">Lead Management — Three Shifts</div>
+  <h2>Once SDRs run on AI, <span class="accent">three things shift.</span></h2>
+  <div class="shifts" style="margin-top:2rem;">
+    <div class="shift">
+      <div class="shift-n">1</div>
+      <h3>Routing</h3>
+      <p>Low-intent transcripts flagged → nurture track. Not SDR calendar.</p>
+      <div class="metric">4 hrs saved per SDR per week</div>
+    </div>
+    <div class="shift">
+      <div class="shift-n">2</div>
+      <h3>Qualification</h3>
+      <p>High-intent language in transcript auto-escalates to AE same day.</p>
+      <div class="metric">Speed-to-quote: 3.2 days → 11 hours</div>
+    </div>
+    <div class="shift">
+      <div class="shift-n">3</div>
+      <h3>Handoff to Marketing</h3>
+      <p>Lost-reason patterns feed ICP + ad copy weekly. Phil's foundation stays fresh.</p>
+      <div class="metric">256 calls · 52% gatekeeper · 7% engaged → ICP re-cut</div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>Transcripts as a Goldmine</span>
+    <span class="page-no">08 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 9 — ANALYTICS -->
+<section class="slide" data-slide="9">
+  <div class="eyebrow">Performance Analytics</div>
+  <h2>One screen. <span class="accent">Three signals.</span></h2>
+  <div class="analytics">
+    <div class="signal"><div class="n">Signal 01</div><h4>Dimension trend per rep</h4><p>Is the rep actually improving on their weakest axis?</p></div>
+    <div class="signal"><div class="n">Signal 02</div><h4>Framework adoption rate</h4><p>Is coaching sticking — or are they falling back into habits?</p></div>
+    <div class="signal"><div class="n">Signal 03</div><h4>ICP drift indicator</h4><p>Is the market shifting underneath you?</p></div>
+  </div>
+  <div class="north-star">
+    <div class="label">The founder's single metric</div>
+    <div class="metric">% of reps improving on their weakest dimension this month.</div>
+  </div>
+  <div class="slide-footer">
+    <span>Transcripts as a Goldmine</span>
+    <span class="page-no">09 / 10</span>
+  </div>
+</section>
+
+<!-- SLIDE 10 — TAKEAWAY + FORK -->
+<section class="slide" data-slide="10">
+  <div class="eyebrow">Takeaway · Then Q&A</div>
+  <h2>Three sentences. <span class="accent">Then fork it.</span></h2>
+  <div class="takeaways">
+    <div class="tk"><div class="n">1</div><div class="tk-body">Reporting tells you what <em>happened.</em> This system tells each rep what to <em>practice this week.</em></div></div>
+    <div class="tk"><div class="n">2</div><div class="tk-body">Your <strong>CRM already knows</strong> what's broken. You just never listened.</div></div>
+    <div class="tk"><div class="n">3</div><div class="tk-body"><strong>Fork the blueprint.</strong> Plug in your Close or HubSpot key. <em>It runs tonight.</em></div></div>
+  </div>
+  <div class="cta-row">
+    <a href="https://github.com/chris1928a/sales-leadership-board" target="_blank">github.com/chris1928a/sales-leadership-board</a>
+    <span style="color:var(--gray);">Questions → live on Slido</span>
+  </div>
+  <div class="slide-footer">
+    <span>Chris Erler · chris@erlerventures.org</span>
+    <span class="page-no">10 / 10</span>
+  </div>
+</section>
+
+</div>
+
+<div class="nav">
+  <button id="prev">‹</button>
+  <button id="next">›</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let idx = 0;
+  function show(i) {
+    idx = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, k) => s.classList.toggle('active', k === idx));
+  }
+  document.getElementById('prev').onclick = () => show(idx - 1);
+  document.getElementById('next').onclick = () => show(idx + 1);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(idx + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(idx - 1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+    if (e.key === 'f' || e.key === 'F') document.documentElement.requestFullscreen?.();
+  });
+  // Touch
+  let tx = 0;
+  document.addEventListener('touchstart', (e) => tx = e.touches[0].clientX);
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (dx < -50) show(idx + 1);
+    if (dx > 50) show(idx - 1);
+  });
+</script>
+</body>
+</html>
