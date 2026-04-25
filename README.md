@@ -418,6 +418,13 @@ write_dashboard(daily_data, os.getenv("GOOGLE_SHEET_ID"))
 
 ---
 
+## See Also
+
+- **[Erler Brain](https://github.com/chris1928a/erler-brain-public)** — the personal AI Assistant that built this. Ships with the `sherpa-gtm-sales-intelligence` Claude Skill, which is the *meta-instruction* (how Claude reasons about CRM data) — the Sales Board is the *runtime* that executes that reasoning daily.
+- **[Cape Town AI Exchange](https://github.com/chris1928a/cape-town-ai-exchange)** — quickstart guides for this and other tools, plus the community where they get shared.
+
+---
+
 ## License
 
 MIT. Use it, modify it, share it. Attribution appreciated but not required.
