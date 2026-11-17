@@ -308,9 +308,9 @@ A: Ich gebe Claude den Transcript plus das Framework als Rubrik. Score 1-5 pro D
 
 | Asset | Link | Wann im Deck zeigen |
 |-------|------|---------------------|
-| **Live Dashboard (Google Sheet)** | https://docs.google.com/spreadsheets/d/1l1TlfRe4_OFwh_ab8xKScbJQJM2bufv0tggQtYQrVwc/edit?gid=1022464734 | Nach Slide 5 (6-Dim Stack) — 30 Sekunden Screen-Share auf das echte Rep-Dashboard |
-| **ICP Assessment v1 (ursprünglich)** | https://docs.google.com/document/d/1DM9lMWxCHd5_YdNVJcXc6Ejf6PLl_iHvfKrZM_4dieQ/edit | Slide 8 (Lead Mgmt Shifts), Shift 3 "Handoff to Marketing" — das VORHER |
-| **ICP Assessment v2 (nach Rebuild)** | https://docs.google.com/document/d/1KXydHUdeXydNlkkcEBGSGMbEmxONHjAM-H3GTSw7-GA/edit | Slide 8, direkt nach v1 — das NACHHER. Die Transformation ist der Story-Moment. |
+| **Live Dashboard (Google Sheet)** | intern, nicht öffentlich | Nach Slide 5 (6-Dim Stack) — 30 Sekunden Screen-Share auf das echte Rep-Dashboard |
+| **ICP Assessment v1 (ursprünglich)** | intern, nicht öffentlich | Slide 8 (Lead Mgmt Shifts), Shift 3 "Handoff to Marketing" — das VORHER |
+| **ICP Assessment v2 (nach Rebuild)** | intern, nicht öffentlich | Slide 8, direkt nach v1 — das NACHHER. Die Transformation ist der Story-Moment. |
 
 ### Live-Demo-Choreographie (empfohlen)
 
